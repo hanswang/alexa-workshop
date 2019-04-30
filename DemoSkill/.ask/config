@@ -21,7 +21,7 @@
             "alexaUsage": [
               "custom/default"
             ],
-            "revisionId": "68cb678c-a388-48d3-a754-8e621960d530",
+            "revisionId": "d1471347-0384-43cd-bc6c-b459ee4f7449",
             "codeUri": "lambda/us-east-1_serverlessrepo-alexa-skil-alexaskillskitnodejsfact-19R9I2OTG5IQV",
             "handler": "index.handler",
             "runtime": "nodejs8.10"

@@ -14,6 +14,9 @@
   "author": "Amazon.com",
   "license": "Apache-2.0",
   "dependencies": {
-    "ask-sdk": "^2.0.0"
+    "ask-sdk": "^2.0.0",
+    "ask-sdk-core": "^2.0.7",
+    "ask-sdk-model": "^1.4.1",
+    "aws-sdk": "^2.388.0"
   }
 }
