@@ -2,6 +2,7 @@
 /* eslint-disable  no-console */
 
 const Alexa = require('ask-sdk');
+const AWS = require("aws-sdk");
 
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
@@ -33,6 +34,90 @@ const HelloWorldIntentHandler = {
       .speak(speechText)
       .withSimpleCard('Hello World', speechText)
       .getResponse();
+  },
+};
+
+const GetAllDetectedObjects = function () {
+  return new Promise((resolve, reject) => {
+    var docClient = new AWS.DynamoDB.DocumentClient();
+    var params = {
+      TableName: 'tripLog'
+    };
+
+    var items = [];
+
+    var scanExecute = function () {
+      docClient.scan(params, function (err, result) {
+
+        if (err) {
+          reject(err);
+        }
+        else {
+          items = items.concat(result.Items);
+
+          console.log("     Read " + result.Count + " items");
+          if (result.LastEvaluatedKey) {
+
+            params.ExclusiveStartKey = result.LastEvaluatedKey;
+            console.log("     Starting next page scan...");
+            scanExecute();
+          }
+          else {
+            console.log("End of scanning - retrieved " + items.length + " items in total");
+            resolve(items);
+          }
+        }
+      });
+    }
+    console.log("Starting initial scan...")
+    scanExecute();
+  });
+};
+const loadLogRecords = handlerInput => {
+  return new Promise(resolve => {
+    GetAllDetectedObjects().then(results => {
+      if (results.length > 0) {
+        // Get the most-recently detected object
+        var mostRecentlyDetected = results[results.length -1];
+
+        console.log(`Most recently detected object was ${mostRecentlyDetected.objectLabel}`);
+
+        var timesDectectedWords = mostRecentlyDetected.detectionCount > 1 ? ` ${mostRecentlyDetected.detectionCount} times` : "only once."
+        resolve(
+          handlerInput.responseBuilder
+            .speak(`The most recently detected item was a ${mostRecentlyDetected.tourDest} and that was 5 ago. It has been detected a total of ${timesDectectedWords}`)
+            .getResponse()
+        );
+      }
+      else {
+        resolve(
+          handlerInput.responseBuilder
+            .speak("There haven't been any recently detected objects.")
+            .getResponse()
+        );
+      }
+    })
+      .catch((err) => {
+        console.log(err);
+
+        resolve(
+          handlerInput.responseBuilder
+            .speak("Oops, something went wrong!")
+            .getResponse()
+        );
+      });
+  })
+};
+
+const GetLastDestHandler = {
+  canHandle(handlerInput) {
+    const request = handlerInput.requestEnvelope.request;
+    return (request.type === 'LaunchRequest'
+      || request.type === 'IntentRequest')
+      && request.intent.name === 'MostRecentlyLoggedDest';
+  },
+  handle(handlerInput) {
+    return loadLogRecords(handlerInput);
   },
 };
 
@@ -139,6 +224,7 @@ exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequestHandler,
     HelloWorldIntentHandler,
+    GetLastDestHandler,
     GetNewFactHandler,
     HelpHandler,
     ExitHandler,

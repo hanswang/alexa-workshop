@@ -40,6 +40,15 @@
           ]
         },
         {
+          "name": "MostRecentlyLoggedDest",
+          "slots": [],
+          "samples": [
+            "what was the most recently logged destintion",
+            "what destination did you wish last",
+            "what destination did you last wish"
+          ]
+        },
+        {
           "name": "AMAZON.YesIntent",
           "samples": []
         },
@@ -51,5 +60,5 @@
       "types": []
     }
   },
-  "version": "12"
+  "version": "14"
 }
