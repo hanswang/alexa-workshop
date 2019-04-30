@@ -3,6 +3,39 @@
 
 const Alexa = require('ask-sdk');
 
+const LaunchRequestHandler = {
+  canHandle(handlerInput) {
+    const request = handlerInput.requestEnvelope.request;
+    return (request.type === 'LaunchRequest'
+      && request.intent.name === 'HelloWorldIntent');
+  },
+  handle(handlerInput) {
+    const speechText = 'Welcome to the Alexa Skills Kit, you can say hello!';
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      .withSimpleCard('Hello World', speechText)
+      .getResponse();
+  },
+};
+
+const HelloWorldIntentHandler = {
+  canHandle(handlerInput) {
+    const request = handlerInput.requestEnvelope.request;
+    return request.type === 'IntentRequest'
+      && request.intent.name === 'HelloWorldIntent';
+  },
+  handle(handlerInput) {
+    const speechText = 'Hello World!';
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .withSimpleCard('Hello World', speechText)
+      .getResponse();
+  },
+};
+
 const GetNewFactHandler = {
   canHandle(handlerInput) {
     const request = handlerInput.requestEnvelope.request;
@@ -104,6 +137,8 @@ const skillBuilder = Alexa.SkillBuilders.standard();
 
 exports.handler = skillBuilder
   .addRequestHandlers(
+    LaunchRequestHandler,
+    HelloWorldIntentHandler,
     GetNewFactHandler,
     HelpHandler,
     ExitHandler,
