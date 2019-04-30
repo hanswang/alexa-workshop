@@ -1,0 +1,24 @@
+{
+  "manifest": {
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "uri": "serverlessrepo-alexa-skil-alexaskillskitnodejsfact-19R9I2OTG5IQV",
+          "sourceDir": "lambda/us-east-1_serverlessrepo-alexa-skil-alexaskillskitnodejsfact-19R9I2OTG5IQV"
+        },
+        "interfaces": []
+      }
+    },
+    "manifestVersion": "1.0",
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "name": "DemoSkill"
+        },
+        "en-AU": {
+          "name": "DemoSkill"
+        }
+      }
+    }
+  }
+}
