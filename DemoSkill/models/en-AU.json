@@ -34,6 +34,7 @@
         },
         {
           "name": "HelloWorldIntent",
+          "slots": [],
           "samples": [
             "hello"
           ]
@@ -50,5 +51,5 @@
       "types": []
     }
   },
-  "version": "6"
+  "version": "11"
 }
