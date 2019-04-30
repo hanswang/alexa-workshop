@@ -3,22 +3,47 @@
     "apis": {
       "custom": {
         "endpoint": {
-          "uri": "arn:aws:lambda:us-east-1:785328487974:function:serverlessrepo-alexa-skil-alexaskillskitnodejsfact-19R9I2OTG5IQV",
-          "sourceDir": "lambda/us-east-1_serverlessrepo-alexa-skil-alexaskillskitnodejsfact-19R9I2OTG5IQV"
+          "uri": "serverlessrepo-alexa-skil-alexaskillskitnodejsfact-1U3KUTOY5816V",
+          "sourceDir": "lambda/us-east-1_serverlessrepo-alexa-skil-alexaskillskitnodejsfact-1U3KUTOY5816V"
         },
         "interfaces": []
       }
     },
     "manifestVersion": "1.0",
+    "privacyAndCompliance": {
+      "locales": {
+        "en-AU": {}
+      },
+      "allowsPurchases": false,
+      "usesPersonalInfo": false,
+      "isChildDirected": false,
+      "isExportCompliant": true,
+      "containsAds": false
+    },
     "publishingInformation": {
       "locales": {
-        "en-US": {
-          "name": "DemoSkill"
-        },
         "en-AU": {
-          "name": "DemoSkill"
+          "name": "DemoSkill",
+          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/f017/de96e59ccdc9447f8e43176b6ec09016/APP_ICON?versionId=fkJ3hPIrFfZcjeSCWCzKKOccryTiPbvR&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190430T111007Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190430%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=a933bd1b9efea495bd181b4d6f182d2e838c3edb06152e0c62f12db52079328c",
+          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/15af/799a5782f40b4ffc88387895596dfb0c/APP_ICON_LARGE?versionId=TK.3Alq7IvK4du4vuoNHQg_2Aa7mm3I5&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190430T111007Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190430%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=c8a01bc1a61a98fd12a3684ef23b7e36f142dee8949102af7125a8efd48ba39f",
+          "summary": "Hello world",
+          "description": "Hello say hello world",
+          "examplePhrases": [
+            "Alexa, ask hello node for a new fact",
+            "Alexa, tell hello node to hello"
+          ],
+          "keywords": [
+            "hello"
+          ]
         }
-      }
+      },
+      "isAvailableWorldwide": false,
+      "distributionMode": "PUBLIC",
+      "testingInstructions": "Say hello",
+      "category": "EDUCATION_AND_REFERENCE",
+      "distributionCountries": [
+        "AU"
+      ]
     }
   }
 }
