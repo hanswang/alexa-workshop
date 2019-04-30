@@ -19,6 +19,7 @@ const GetNewFactHandler = {
     return handlerInput.responseBuilder
       .speak(speechOutput)
       .withSimpleCard(SKILL_NAME, randomFact)
+      .reprompt('Do you want another fact')
       .getResponse();
   },
 };
@@ -42,7 +43,7 @@ const ExitHandler = {
     const request = handlerInput.requestEnvelope.request;
     return request.type === 'IntentRequest'
       && (request.intent.name === 'AMAZON.CancelIntent'
-        || request.intent.name === 'AMAZON.StopIntent');
+        || request.intent.name === 'AMAZON.StopIntent' || request.intent.name === 'AMAZON.NoIntent');
   },
   handle(handlerInput) {
     return handlerInput.responseBuilder
@@ -77,8 +78,8 @@ const ErrorHandler = {
   },
 };
 
-const SKILL_NAME = 'Space Facts';
-const GET_FACT_MESSAGE = 'Here\'s your fact: ';
+const SKILL_NAME = 'Daily Facts';
+const GET_FACT_MESSAGE = 'Hans tells you that: ';
 const HELP_MESSAGE = 'You can say tell me a space fact, or, you can say exit... What can I help you with?';
 const HELP_REPROMPT = 'What can I help you with?';
 const STOP_MESSAGE = 'Goodbye!';

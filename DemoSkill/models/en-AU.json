@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "space fact",
+      "invocationName": "daily fact",
       "intents": [
         {
           "name": "AMAZON.FallbackIntent",
@@ -35,10 +35,14 @@
         {
           "name": "AMAZON.YesIntent",
           "samples": []
+        },
+        {
+          "name": "AMAZON.NoIntent",
+          "samples": []
         }
       ],
       "types": []
     }
   },
-  "version": "5"
+  "version": "6"
 }
